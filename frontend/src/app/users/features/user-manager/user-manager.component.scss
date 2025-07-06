@@ -1,0 +1,54 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  min-width: 400px;
+}
+
+.toggle-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 0;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  margin: 0;
+  gap: 8px;
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  overflow-y: visible;
+}
+
+@media (max-width: 768px) {
+  ::ng-deep .mat-mdc-dialog-container-with-actions .mat-mdc-dialog-content {
+    padding: 0 8px;
+  }
+
+  .user-form {
+    min-width: 300px;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

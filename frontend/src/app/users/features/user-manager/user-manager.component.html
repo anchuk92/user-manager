@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h2 mat-dialog-title>{{ modalTitle() }}</h2>
+  <button mat-icon-button (click)="closeModal()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+@if (!loading()) {
+<mat-dialog-content>
+  <form [formGroup]="userForm" class="user-form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput
+             formControlName="name"
+             placeholder="Enter full name"
+             required>
+      @if (userForm.get('name')?.hasError('required')) {
+        <mat-error>Full name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role" required>
+        <mat-option value="Admin">Admin</mat-option>
+        <mat-option value="Manager">Manager</mat-option>
+        <mat-option value="Normal User">User</mat-option>
+      </mat-select>
+      @if (userForm.get('role')?.hasError('required')) {
+        <mat-error>Role is required</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="toggle-field">
+      <mat-slide-toggle formControlName="isActive"/>
+        @if (userForm.get('isActive')?.value) {
+          <span>Active</span>
+        } @else {
+          <span>Disabled</span>
+        }
+    </div>
+
+  </form>
+</mat-dialog-content>
+} @else if (loading()) {
+  <div class="overlay">
+    <mat-spinner></mat-spinner>
+  </div>
+}
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeModal()">Cancel</button>
+  <button mat-raised-button
+          type="submit"
+          color="primary"
+          (click)="onSubmit()"
+          [disabled]="userForm.invalid">
+    {{ modalTitle() }}
+  </button>
+</mat-dialog-actions>
