@@ -23,24 +23,6 @@ A simple full-stack application to manage users using Firebase as the backend an
 
 ---
 
-## Project Structure
-```
-root/
-├── backend/ # Firebase Functions backend
-│ ├── src/
-│ ├── functions/
-│ ├── package.json
-│ └── firebase.json
-│
-├── frontend/ # Angular application
-│ ├── src/
-│ ├── angular.json
-│ └── package.json
-│
-└── README.md
-```
----
-
 ## Getting Started
 
 ### Prerequisites
